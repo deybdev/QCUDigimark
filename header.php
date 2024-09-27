@@ -1,6 +1,7 @@
 <?php
-    
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,10 @@
             </div>
             <div class="logined-icons">    
                 <div class="login-icon">
-                   <i class="fa-solid fa-heart"></i>
+                   <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="login-icon">
+                   <i class="fa-regular fa-message"></i>
                 </div>
                 <div class="login-icon">
                     <i class="fa-regular fa-circle-user"></i>

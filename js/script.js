@@ -3,10 +3,9 @@ document.getElementById("user_type").addEventListener("change", function() {
     var storeInput = document.getElementById("store_name");
 
     if (userType === "customer") {
-        storeInput.disabled = true; 
+        storeInput.readOnly = true; 
         storeInput.value = '';
     } else if (userType === "seller") {
-        storeInput.disabled = false;
+        storeInput.readOnly = false;
     }
 });
-

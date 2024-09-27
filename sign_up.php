@@ -1,33 +1,38 @@
 <?php
-    session_start();
     include 'config.php';
 
     if(isset($_POST['signup'])){
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = mysqli_real_escape_string($conn, md5($_POST['password']));
-        $cpassword = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
-        $user_type = mysqli_real_escape_string($conn,$_POST['user_type']);
-        $store_name = mysqli_real_escape_string($conn,$_POST['store_name']);
-        
-        $check_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email ='$email' AND password = '$password' ") or die ('query failed');
+        $password = mysqli_real_escape_string($conn, $_POST['password']); 
+        $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+        $user_type = mysqli_real_escape_string($conn, $_POST['user_type']);
+        $store_name = mysqli_real_escape_string($conn, $_POST['store_name']);
 
-        if(empty($name) || empty($email) || empty($_POST['password']) || empty($_POST['cpassword']) || empty($user_type)){
+
+        if(empty($name) || empty($email) || empty($password) || empty($cpassword) || empty($user_type)){
             $message = 'All fields are required. Please fill in all the fields.';
-        }else if($password !== $cpassword){
-            $message = 'Confirm password not matched';
-        }else{
+        } else if ($password !== $cpassword) {
+            $message = 'Confirm password does not match';
+        } else {
+
+            $check_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die ('Query failed');
             if (mysqli_num_rows($check_users) > 0) {
-                // User already exists
                 $message = 'User with this email already exists';
             } else {
-                // Insert new user into database
-                mysqli_query($conn, "INSERT INTO `users` (name, email, password, user_type, store_name) VALUES ('$name', '$email', '$password', '$user_type', '$store_name')") or die('Query failed');
-                $message = 'Registered Successfully!';
-                header('location: verify.php');
-             }
 
-         }
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                if ($user_type === 'customer') {
+                    $store_name = '0';
+                }
+
+                mysqli_query($conn, "INSERT INTO `users` (name, email, password, user_type, store_name) VALUES ('$name', '$email', '$hashed_password', '$user_type', '$store_name')") or die('Query failed');
+
+                header('Location: verify.php');
+                exit();
+            }
+        }
     }
 
 ?>
@@ -53,12 +58,12 @@
                             <div class="form">
                                 <h2>Sign Up</h2>
                                     <div class="form-element full-width">
-                                        <label for="email">Full Name: </label> 
-                                        <input type="text" id="name" name="name" placeholder="E.g. Dela Cruz, Juan A.">
+                                        <label for="name">Name:</label>
+                                        <input type="text" id="name" placeholder="E.g. Dela Cruz, Juan A." name="name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
                                     </div>
                                     <div class="form-element full-width">
-                                        <label for="email">Email: </label>
-                                        <input type="email" id="email" name="email" placeholder="example@gmail.com">
+                                        <label for="email">Email:</label>
+                                        <input type="email" id="email" placeholder="E.g. example@gmail.com" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                                     </div>
                                     <div class="form-element">
                                         <label for="password">Password: </label>
@@ -69,21 +74,29 @@
                                         <input type="password" id="confirm_password" name="cpassword" placeholder="Confirm your Password">
                                     </div>
                                     <div class="form-element">
-                                        <label for="user_type">Type: </label>
-                                        <select name="user_type" id="user_type">
-                                            <option value="seller">Seller</option>
-                                            <option value="customer">Customer</option>
-                                        </select>
+                                        <label for="user_type">User Type:</label>
+                                            <select id="user_type"  name="user_type" >
+                                                <option value="customer" selected>Customer</option>
+                                                <option value="seller">Seller</option>
+                                            </select>
                                     </div>
                                     <div class="form-element">
                                         <label for="store_name">Store Name: </label>
-                                        <input type="text" name="store_name" placeholder="Enter Store Name">
+                                        <input type="text" id="store_name" name="store_name" placeholder="Only for sellers" readonly>
                                     </div>
                         </form>
                     <div class="form-element full-width terms">
                         <input type="checkbox" id="terms">
                         <label for="terms">I have agreed to the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
                     </div>
+
+                    <?php 
+                        if(isset($message)){
+                            echo'<div class="alert-message">
+                                    <p><i class="fa-solid fa-circle-exclamation"></i>'.$message.'</p>
+                                </div>';
+                          }
+                    ?>
                     <div class="form-element full-width">
                         <button class="btn" name="signup" >Sign Up</button>
                     </div>
