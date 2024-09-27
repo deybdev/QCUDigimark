@@ -105,46 +105,61 @@ nav {
 .login-icon i{
     font-size: 30px;
 }
+
+.form-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200; /* Ensure the form is above everything else */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* REGISTER FORM */
-.register-form {
+.form-container {
     position: absolute;
     top: -150%;
     left: 50%;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
     background: var(--white-color);
-    margin-top: 380px;
     width: 500px;
     border-radius: 6px;
+    margin-top: 380px;
     padding: 20px 30px;
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
-    transition: top .3s ease-in-out,
-                opacity .3s ease-in-out,
-                transform .3ms ease-in-out;
+    transition: top 0.5s ease, opacity 0.5s ease;
+    z-index: 201; /* Ensure form is above the background */
+    pointer-events: none; /* Disable interaction when inactive */
 }
 
-.register-form.active {
+.form-container.active {
     top: 50%;
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
+    pointer-events: auto; /* Enable interaction when active */
 }
 
-.register-form .close-btn {
+.form-container .close-btn {
     position: absolute;
-    top: 5px;
+    top: 2px;
     right: 10px;
-    font-size: 20px;
+    color: #929292;
+    font-size: 26px;
     cursor: pointer;
 }
 
-.register-form .form {
+.form-container .form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0px;
 }
 
-.register-form .form h2 {
+.form-container .form h2 {
     text-align: center;
     margin: 10px 0px 20px;
     font-size: 25px;
@@ -152,19 +167,27 @@ nav {
     flex-basis: 100%;
 }
 
-.register-form .form .form-element {
+.form-container .box-form{
+    padding: 20px 30px;
+    color: #0e5500;
+    background: #87e784;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.form-container .form .form-element {
     flex-basis: 48%;
     margin-bottom: 7px;
 }
 
-.register-form .form .full-width {
+.form-container .form .full-width {
     flex-basis: 100%;
 }
 
-.register-form .form .form-element select,
-.register-form .form .form-element input[type="text"],
-.register-form .form .form-element input[type="email"],
-.register-form .form .form-element input[type="password"] {
+.form-container .form .form-element select,
+.form-container .form .form-element input[type="text"],
+.form-container .form .form-element input[type="email"],
+.form-container .form .form-element input[type="password"] {
     margin-top: 3px;
     width: 100%;
     padding: 8px;
@@ -173,56 +196,56 @@ nav {
     box-sizing: border-box;
 }
 
-.register-form .form .form-element input:disabled{
+.form-container .form .form-element input:disabled{
     background-color: #f5f5f5;
     color: #f5f5f5;
     cursor: not-allowed;
     opacity: 0.6;
 }
 
-.register-form .form .form-element button {
+.form-container .form .form-element button {
     width: 100%;
     margin-top: 10px;
     padding: 8px;
 }
 
-.register-form .form-element.terms {
+.form-container .form-element.terms {
     display: flex;
     align-items: center;
     gap: 5px; 
 }
 
-.register-form .form-element.terms label {
+.form-container .form-element.terms label {
     margin: 0;
     margin-top: 4px;
     flex-grow: 1;
 }
 
-.register-form .form-element.terms input[type="checkbox"] {
+.form-container .form-element.terms input[type="checkbox"] {
     width: auto;
 }
 
 
-.register-form .form .form-element label {
+.form-container .form .form-element label {
     display: block;
     margin-bottom: 5px;
     font-size: 15px;
 }
 
-.register-form .form .form-element input[type="checkbox"] {
+.form-container .form .form-element input[type="checkbox"] {
     margin-right: 5px;
 }
 
-.register-form .form .form-element a {
+.form-container .form .form-element a {
     color: #1a79ca;
     text-decoration: none;
     font-weight: 600;
 }
 
-.register-form .form .form-element p {
+.form-container .form .form-element p {
     text-align: center;
 }
 
-.register-form .form .form-element hr {
+.form-container .form .form-element hr {
     margin: 10px 0;
 }

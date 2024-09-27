@@ -49,53 +49,139 @@
             </div>
         </nav>
 
-<!-- LOGIN FORM -->
-        <div class="register-form">
-            <div class="close-btn">&times;</div>
+           <!-- CONTAINER FOR BOTH FORMS -->
+        <div class="form-wrapper">
+            <!-- SIGN UP FORM -->
+            <div class=" form-container sign-up-form">
+                <div class="close-btn">&times;</div>
                 <div class="form">
                     <h2>Sign Up</h2>
                     <div class="form-element full-width">
-                        <label for="email">Full Name : </label> 
+                        <label for="email">Full Name: </label> 
                         <input type="text" id="name" placeholder="E.g. Dela Cruz, Juan A.">
                     </div>
                     <div class="form-element full-width">
-                        <label for="email">Email : </label>
+                        <label for="email">Email: </label>
                         <input type="email" id="email" placeholder="example@gmail.com">
                     </div>
                     <div class="form-element">
-                        <label for="password">Password : </label>
-                        <input type="email" id="password" placeholder="Enter Password">
+                        <label for="password">Password: </label>
+                        <input type="password" id="password" placeholder="Create your Password">
                     </div>
                     <div class="form-element">
-                        <label for="confirm_password">Confirm Password : </label>
-                        <input type="password" id="confirm_password" placeholder="Confirm Password">
+                        <label for="confirm_password">Confirm Password: </label>
+                        <input type="password" id="confirm_password" placeholder="Confirm your Password">
                     </div>
                     <div class="form-element">
-                            <label for="user_type">Type : </label>
-                            <select name="user_type" id="user_type">
-                                <option value="seller">Seller</option>
-                                <option value="customer">Customer</option>
-                            </select>
+                        <label for="user_type">Type: </label>
+                        <select name="user_type" id="user_type">
+                            <option value="seller">Seller</option>
+                            <option value="customer">Customer</option>
+                        </select>
                     </div>
                     <div class="form-element">
-                        <label for="store_name">Store Name : </label>
+                        <label for="store_name">Store Name: </label>
                         <input type="text" id="store_name" placeholder="Enter Store Name">
                     </div>
                     <div class="form-element full-width terms">
                         <input type="checkbox" id="terms">
-                        <label for="store_name">I have agreed to the <a href="">Terms</a> and <a href="">Conditions</a></label>                
+                        <label for="terms">I have agreed to the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
                     </div>
-
                     <div class="form-element full-width">
                         <button class="btn">Sign Up</button>
                     </div>
                     <div class="form-element full-width">
                         <hr>
-                        <p> Have an account? <a href="#" id="show-login">Sign In</a></p>
+                        <p> Have an account? <a href="#" id="show-signin">Sign In</a></p>
                     </div>
-
                 </div>
+            </div>
+
+            <!-- SIGN IN FORM -->
+            <div class="form-container sign-in-form">
+                <div class="close-btn">&times;</div>
+                <div class="form">
+                    <h2>Sign In</h2>
+                    <div class="form-element full-width">
+                        <label for="email">Email: </label>
+                        <input type="email" id="email" placeholder="example@gmail.com">
+                    </div>
+                    <div class="form-element full-width">
+                        <label for="password">Password: </label>
+                        <input type="password" id="password" placeholder="Enter Password">
+                    </div>
+                    <div class="form-element full-width terms">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <div class="form-element full-width">
+                        <button class="btn">Sign In</button>
+                    </div>
+                    <div class="form-element full-width">
+                        <p><a href="#"">Forgot Password?</a></p>
+                    </div>
+                    <div class="form-element full-width">
+                        <hr>
+                        <p> Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- OTP VERIFICATION -->
+        <div class="form-container otp-verify">
+            <div class="close-btn">&times;</div>
+                <div class="form">
+                    <h2>OTP Verification</h2>
+                <div class="box-form">
+                    <p>We've sent a verification code to your <br> Email - example@gmail.com</p>
+                </div>
+                <div class="form-element full-width">
+                        <label for="verify-email">Verification Code: </label> 
+                        <input type="text" id="verify-email" placeholder="Enter verification code">
+                </div>
+                <div class="form-element full-width">
+                        <button class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- FORGOT PASSWORD -->
+        <div class="form-container otp-verify ">
+            <div class="close-btn">&times;</div>
+                <div class="form">
+                    <h2>Forgot Password</h2>
+                <div class="form-element full-width">
+                        <label for="verify-email">Email Address: </label> 
+                        <input type="text" id="verify-email" placeholder="Enter your email address">
+                </div>
+                <div class="form-element full-width">
+                        <button class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- NEW PASSWORD -->
+        <div class="form-container otp-verify">
+            <div class="close-btn">&times;</div>
+                <div class="form">
+                    <h2>New Password</h2>
+                        <div class="box-form">
+                        <p>Please create a new password that you don't use on any other site</p>
+                    </div>
+                    <div class="form-element full-width">
+                        <label for="new-password">Create your new Password: </label>
+                        <input type="password" id="new-password" placeholder="Enter new password">
+                    </div>
+                    <div class="form-element full-width">
+                        <label for="new-password">Confirm new Password: </label>
+                        <input type="password" id="new-password" placeholder="Re-enter new password">
+                    </div>
+                <div class="form-element full-width">
+                        <button class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+        
+
 
     </div>
 
