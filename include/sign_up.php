@@ -14,17 +14,16 @@
             $message = 'All fields are required. Please fill in all the fields.';
         } else if ($password !== $cpassword) {
             $message = 'Confirm password does not match';
+        } else if (strlen($_POST['password']) < 8) {
+            $message = 'Password must be at least 8 characters long';
         } else {
-
             $check_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die ('Query failed');
             if (mysqli_num_rows($check_users) > 0) {
                 $message = 'User with this email already exists';
             } else {
-
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
                 if ($user_type === 'customer') {
-                    $store_name = '0';
+                    $store_name = '-';
                 }
 
                 mysqli_query($conn, "INSERT INTO `users` (name, email, password, user_type, store_name) VALUES ('$name', '$email', '$hashed_password', '$user_type', '$store_name')") or die('Query failed');
@@ -43,13 +42,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Register</title>
 </head>
 <body>
     <div class="container">
-        <?php include'header.php';?>
+        <?php include'../main/header.php';?>
      <!-- SIGN UP FORM -->
         <div class="form-wrapper">
             <div class=" form-container sign-up-form active">
@@ -89,7 +88,6 @@
                         <input type="checkbox" id="terms">
                         <label for="terms">I have agreed to the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
                     </div>
-
                     <?php 
                         if(isset($message)){
                             echo'<div class="alert-message">
