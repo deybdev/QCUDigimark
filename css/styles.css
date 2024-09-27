@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --body-bg: #FAD707;
+    --main-text-color: #1f2e6c;
+    --white-color: #ffffff;
+}
+
+body{
+    background: var(--body-bg);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', arial;
+}
+
+/* Default Button */
+.btn{
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    color: #FFFFFF;
+    background: #1f2e6c;
+    cursor: pointer;
+}
+
+.btn>i{
+    margin:0 6px;
+}
+
+.btn:hover{
+    background: #3e5097;
+    transition: .2s;
+}
+
+.container{
+    width: 100%;
+    position: relative; 
+}
+
+nav {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    line-height: 5rem;
+    background: #FFFFFF;
+    padding-inline: 3vw;
+    transition: .3s;
+    z-index: 100;
+}
+
+.logo{
+    position: relative;
+    margin-left: 100px;
+}
+
+.logo-name{
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #1f2e6c;
+}
+
+.nav-menu .nav-menu-list{
+    display: flex;
+    margin-left: 200px;
+}
+
+
+.nav-menu .nav-list{
+    list-style: none;
+    position: relative;
+}
+
+.nav-list a{
+    color: #1f2e6c;
+}
+
+.nav-link{
+    text-decoration: none;
+    font-weight: 500;
+    padding-inline: .8rem;
+    margin-inline: 1.1rem;
+}
+
+#menu-bar{
+    display: none;
+}
+
+.logined-icons{
+    display: none;
+    margin-top: 5px;
+}
+
+.login-icon{
+    cursor: pointer;  
+    margin-inline: 1.1rem;
+    color: var(--main-text-color);
+}
+
+.login-icon i{
+    font-size: 30px;
+}
+/* REGISTER FORM */
+.register-form {
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    background: var(--white-color);
+    margin-top: 380px;
+    width: 500px;
+    border-radius: 6px;
+    padding: 20px 30px;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
+    transition: top .3s ease-in-out,
+                opacity .3s ease-in-out,
+                transform .3ms ease-in-out;
+}
+
+.register-form.active {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.register-form .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.register-form .form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0px;
+}
+
+.register-form .form h2 {
+    text-align: center;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+    color: var(--main-text-color);
+    flex-basis: 100%;
+}
+
+.register-form .form .form-element {
+    flex-basis: 48%;
+    margin-bottom: 7px;
+}
+
+.register-form .form .full-width {
+    flex-basis: 100%;
+}
+
+.register-form .form .form-element select,
+.register-form .form .form-element input[type="text"],
+.register-form .form .form-element input[type="email"],
+.register-form .form .form-element input[type="password"] {
+    margin-top: 3px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.register-form .form .form-element input:disabled{
+    background-color: #f5f5f5;
+    color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.register-form .form .form-element button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+.register-form .form-element.terms {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.register-form .form-element.terms label {
+    margin: 0;
+    margin-top: 4px;
+    flex-grow: 1;
+}
+
+.register-form .form-element.terms input[type="checkbox"] {
+    width: auto;
+}
+
+
+.register-form .form .form-element label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.register-form .form .form-element input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.register-form .form .form-element a {
+    color: #1a79ca;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-form .form .form-element p {
+    text-align: center;
+}
+
+.register-form .form .form-element hr {
+    margin: 10px 0;
+}
