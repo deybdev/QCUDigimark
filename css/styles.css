@@ -90,14 +90,14 @@ nav {
     display: none;
 }
 
-.login-btn{
-    display: block;
+.logined-icons{
+    display:flex;
+    gap: 20px;
+    margin: auto 10px 0px;
 }
 
-.logined-icons{
-    display: none;
-    gap: 20px;
-    margin: 5px 10px 0px;
+.login-icon .fa-circle-user{
+    margin: auto 20px;
 }
 
 .login-icon{
@@ -106,8 +106,13 @@ nav {
     color: var(--main-text-color);
 }
 
+.login-icon .fa-angle-down p{
+    font-size: 12px;
+    
+}
+
 .login-icon i{
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .form-wrapper {
