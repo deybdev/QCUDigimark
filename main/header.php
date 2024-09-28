@@ -16,7 +16,7 @@
     <div class="container">
         <nav id="header">
             <div class="logo">
-                <p class="logo-name">QCU | DigimarT</p>
+                <p class="logo-name">QCU | Digimart</p>
             </div>
             <div class="nav-menu" id="myMenu">
                 <ul class="nav-menu-list">
@@ -34,8 +34,9 @@
                     </li>
                 </ul>
             </div>
+            
             <div class="login-btn">
-                <button id="show-register" class="btn" onclick="location.href='../include/sign_in.php'"><i class="fa-regular fa-user"></i> Sign in | up</button>
+                <button id="show-register" class="btn" onclick="location.href='../includes/sign_in.php'"><i class="fa-regular fa-user"></i> Sign in | up</button>
             </div>
             <div class="logined-icons" style="display: none;">    
                 <div class="login-icon">

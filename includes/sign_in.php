@@ -4,7 +4,7 @@
 
     if(isset($_POST['signin'])){
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']); // Raw password
+        $password = mysqli_real_escape_string($conn, $_POST['password']); 
     
         // Check if the email exists
         $check_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email ='$email'") or die('query failed');
@@ -14,11 +14,11 @@
     
             // Verify the password using password_verify if the password was hashed during registration
             if(password_verify($password, $row['password'])) {
-                if($row['user_type'] == 'customer') {  // Correct comparison
+                if($row['user_type'] == 'customer') { 
                     $_SESSION['customer_name'] = $row['name'];
                     $_SESSION['customer_email'] = $row['email'];
                     $_SESSION['customer_id'] = $row['id'];
-                    header("location: verify.php");
+                    header("location: ../customer/home.php");
                 } elseif ($row['user_type'] == 'seller') {
                     $_SESSION['customer_name'] = $row['name'];
                     $_SESSION['customer_email'] = $row['email'];
@@ -53,7 +53,7 @@
         <!-- SIGN IN FORM -->
              <div class="form-wrapper">   
                 <div class="form-container sign-in-form active">
-                        <div class="close-btn" onclick="location.href='home.php'">&times;</div>
+                        <div class="close-btn" onclick="location.href='../main/landing_page.php'">&times;</div>
                             <form action="sign_in.php" method="post">
                                 <div class="form">
                                     <h2>Sign In</h2>

@@ -52,7 +52,7 @@
      <!-- SIGN UP FORM -->
         <div class="form-wrapper">
             <div class=" form-container sign-up-form active">
-                <div class="close-btn" onclick="location.href='home.php'">&times;</div>
+                <div class="close-btn" onclick="location.href='../main/landing_page.php'">&times;</div>
                         <form action="sign_up.php" method="post">
                             <div class="form">
                                 <h2>Sign Up</h2>

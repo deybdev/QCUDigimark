@@ -1,5 +1,15 @@
 <?php
+    $conn = mysqli_connect('localhost', 'root','','qcudigimark') or die('connection failed');
 
+    if(isset($_SESSION['customer_name'])){
+        $customer_name = $_SESSION['customer_name'];
+        $trim_name = explode(',',$customer_name);
+        $last_name = trim($trim_name[0]);
+    } else {
+        // Redirect to login if the session is not set
+        header("location: sign_in.php");
+        exit();
+    }
 ?>
 
 
@@ -16,7 +26,7 @@
     <div class="container">
         <nav id="header">
             <div class="logo">
-                <p class="logo-name">QCU | DigimarT</p>
+                <p class="logo-name">QCU | Digimart</p>
             </div>
             <div class="nav-menu" id="myMenu">
                 <ul class="nav-menu-list">
@@ -33,18 +43,46 @@
                         <a href="#about" class="nav-link">About</a>
                     </li>
                 </ul>
-            </div>
-            <div class="logined-icons">    
+
+            </div> 
                 <div class="login-icon">
-                   <i class="fa-regular fa-heart"></i>
+                    <p>Hi, <?php echo htmlspecialchars($last_name); ?></p>
+                    <i class="fa-regular fa-circle-user"></i>
                 </div>
-                <div class="login-icon">
-                   <i class="fa-regular fa-message"></i>
+                <div class="sub-menu-wrap">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <h3><?php echo htmlspecialchars($customer_name); ?></h3>
+                        </div>
+                        <hr>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-regular fa-heart"></i>
+                            <p>Saved Products</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p>Search Product</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Messages</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-regular fa-flag"></i>
+                            <p>Report</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
                 </div>
-                <div class="login-icon">
-                    <p>Hi, Name <i class="fa-regular fa-circle-user"></i><i class="fa-solid fa-angle-down"></i></p>
-                </div>
-            </div>
+
             <div class="nav-menu-btn">
                 <i class="fa-solid fa-bars" onclick="menuFunction()" id="menu-bar"></i>
             </div>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <?php include' ../main/header.php';?>
+    <?php include'../main/header.php';?>
         <div class="form-wrapper">
             <!-- NEW PASSWORD -->
         <div class="form-container otp-verify active">
